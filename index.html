@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0b17">
+  <title>LOL ADS</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 50% 0%, #24204b 0%, #0b0b17 52%); color: #f5f5ff; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 22px max(24px, calc((100vw - 1100px)/2)); border-bottom: 1px solid #ffffff18; }
+    .brand { font-size: 1.65rem; font-weight: 900; letter-spacing: -.05em; }
+    .brand span { color: #b18cff; }
+    .status { font-size: .85rem; color: #c9bedf; background: #ffffff0d; border: 1px solid #ffffff1c; border-radius: 50px; padding: 9px 14px; }
+    main { max-width: 1100px; margin: 0 auto; padding: 88px 24px 100px; }
+    .hero { text-align: center; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .24em; color: #bda3ff; font-size: .74rem; font-weight: 800; }
+    h1 { font-size: clamp(3.5rem, 11vw, 7rem); margin: 14px 0 12px; letter-spacing: -.085em; line-height: 1; }
+    h1 span { color: #ab83ff; }
+    .sub { color: #a9a6c2; font-size: 1.1rem; line-height: 1.65; }
+    .section-head { display:flex; justify-content:space-between; align-items:center; gap:16px; margin: 90px 0 20px; }
+    h2 { font-size: 1.25rem; margin: 0; }
+    .count { color: #9893b5; font-size: .9rem; }
+    .empty { min-height: 290px; border: 1px dashed #66568c; border-radius: 25px; background: linear-gradient(145deg, #ffffff09, #ffffff03); display:flex; flex-direction:column; justify-content:center; align-items:center; padding: 40px 20px; text-align:center; }
+    .empty-icon { font-size: 3rem; filter: drop-shadow(0 0 18px #986dff55); }
+    .empty h3 { font-size: 1.5rem; margin: 18px 0 4px; }
+    .empty p { color: #aaa5c6; max-width: 390px; line-height: 1.6; }
+    #ads-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:20px; }
+    .ad-card { background:#1a1730; border:1px solid #43375d; padding:24px; border-radius:20px; }
+    .ad-card h3 { margin: 0 0 10px; }
+    .ad-card p { color:#bcb6ce; line-height:1.55; }
+    .ad-card a { color:#c8afff; font-weight:700; }
+    footer { border-top:1px solid #ffffff15; color:#88839d; padding:25px; text-align:center; font-size:.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">LOL <span>ADS</span></div>
+    <div class="status">● Coming soon</div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Welcome to</div>
+      <h1>LOL <span>ADS.</span></h1>
+      <p class="sub">Der Platz für deine Ads.<br>Hier erscheinen bald die ersten Anzeigen.</p>
+    </section>
+    <section aria-labelledby="ads-title">
+      <div class="section-head"><h2 id="ads-title">Alle Ads</h2><span class="count" id="ads-count">0 Anzeigen</span></div>
+      <div id="ads-grid"></div>
+      <div class="empty" id="empty-state">
+        <div class="empty-icon">✦</div>
+        <h3>Noch keine Ads verfügbar</h3>
+        <p>Hier ist noch alles leer. Die ersten Anzeigen kommen bald!</p>
+      </div>
+    </section>
+  </main>
+  <footer>© <span id="year"></span> LOL ADS · Made for the LOLs</footer>
+  <script>
+    // Später kommen deine Anzeigen hier rein.
+    // Beispiel: { title: 'Meine Ad', description: 'Beschreibung', url: 'https://example.com' }
+    const ads = [];
+    const grid = document.getElementById('ads-grid');
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('ads-count').textContent = `${ads.length} ${ads.length === 1 ? 'Anzeige' : 'Anzeigen'}`;
+    document.getElementById('empty-state').hidden = ads.length > 0;
+    for (const ad of ads) {
+      const card = document.createElement('article');
+      card.className = 'ad-card';
+      const title = document.createElement('h3'); title.textContent = ad.title;
+      const desc = document.createElement('p'); desc.textContent = ad.description;
+      const link = document.createElement('a'); link.textContent = 'Mehr ansehen →'; link.href = ad.url;
+      link.target = '_blank'; link.rel = 'noopener noreferrer';
+      card.append(title, desc, link); grid.append(card);
+    }
+  </script>
+</body>
+</html>
