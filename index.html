@@ -1,78 +1,75 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b0b17">
-  <title>LOL ADS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b19">
+  <title>LOL ADS – Werbung</title>
   <style>
-    :root { color-scheme: dark; font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif; }
-    * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 50% 0%, #24204b 0%, #0b0b17 52%); color: #f5f5ff; }
-    header { display: flex; justify-content: space-between; align-items: center; padding: 22px max(24px, calc((100vw - 1100px)/2)); border-bottom: 1px solid #ffffff18; }
-    .brand { font-size: 1.65rem; font-weight: 900; letter-spacing: -.05em; }
-    .brand span { color: #b18cff; }
-    .status { font-size: .85rem; color: #c9bedf; background: #ffffff0d; border: 1px solid #ffffff1c; border-radius: 50px; padding: 9px 14px; }
-    main { max-width: 1100px; margin: 0 auto; padding: 88px 24px 100px; }
-    .hero { text-align: center; }
-    .eyebrow { text-transform: uppercase; letter-spacing: .24em; color: #bda3ff; font-size: .74rem; font-weight: 800; }
-    h1 { font-size: clamp(3.5rem, 11vw, 7rem); margin: 14px 0 12px; letter-spacing: -.085em; line-height: 1; }
-    h1 span { color: #ab83ff; }
-    .sub { color: #a9a6c2; font-size: 1.1rem; line-height: 1.65; }
-    .section-head { display:flex; justify-content:space-between; align-items:center; gap:16px; margin: 90px 0 20px; }
-    h2 { font-size: 1.25rem; margin: 0; }
-    .count { color: #9893b5; font-size: .9rem; }
-    .empty { min-height: 290px; border: 1px dashed #66568c; border-radius: 25px; background: linear-gradient(145deg, #ffffff09, #ffffff03); display:flex; flex-direction:column; justify-content:center; align-items:center; padding: 40px 20px; text-align:center; }
-    .empty-icon { font-size: 3rem; filter: drop-shadow(0 0 18px #986dff55); }
-    .empty h3 { font-size: 1.5rem; margin: 18px 0 4px; }
-    .empty p { color: #aaa5c6; max-width: 390px; line-height: 1.6; }
-    #ads-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:20px; }
-    .ad-card { background:#1a1730; border:1px solid #43375d; padding:24px; border-radius:20px; }
-    .ad-card h3 { margin: 0 0 10px; }
-    .ad-card p { color:#bcb6ce; line-height:1.55; }
-    .ad-card a { color:#c8afff; font-weight:700; }
-    footer { border-top:1px solid #ffffff15; color:#88839d; padding:25px; text-align:center; font-size:.85rem; }
+    :root { color-scheme:dark; font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:radial-gradient(ellipse at 50% 0%,#292252 0%,#0b0b19 55%); color:#f8f7ff; }
+    header { padding:45px 20px 25px; text-align:center; }
+    h1 { margin:0; font-size:clamp(2.8rem,8vw,5.5rem); letter-spacing:.09em; background:linear-gradient(95deg,#a58cff,#41f3de); color:transparent; background-clip:text; }
+    .sub { color:#c7c2dd; margin:5px auto 0; }
+    main { max-width:1060px; padding:12px 18px 65px; margin:auto; }
+    .panel { border:1px solid #484062; border-radius:18px; background:rgba(25,22,48,.87); padding:24px; margin:20px 0; box-shadow:0 14px 40px #0004; overflow:hidden; }
+    .panel h2 { font-size:1.08rem; margin:0 0 8px; }
+    .label { display:inline-block; color:#b9b4d5; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; margin-bottom:14px; }
+    .ad-slot { min-height:100px; display:flex; align-items:center; justify-content:center; overflow:auto; max-width:100%; }
+    .ad-slot > div { max-width:100%; }
+    .link { display:inline-block; padding:14px 24px; border-radius:12px; background:linear-gradient(90deg,#8168ec,#23bbbc); color:white; text-decoration:none; font-weight:750; }
+    .link:hover { filter:brightness(1.15); }
+    .note { color:#b9b4d5; font-size:.9rem; line-height:1.6; }
+    footer { padding:30px; text-align:center; color:#948eaf; border-top:1px solid #352d4b; font-size:.86rem; }
   </style>
 </head>
 <body>
   <header>
-    <div class="brand">LOL <span>ADS</span></div>
-    <div class="status">● Coming soon</div>
+    <h1>LOL ADS</h1>
+    <p class="sub">Willkommen bei LOL ADS 🚀</p>
   </header>
   <main>
-    <section class="hero">
-      <div class="eyebrow">Welcome to</div>
-      <h1>LOL <span>ADS.</span></h1>
-      <p class="sub">Der Platz für deine Ads.<br>Hier erscheinen bald die ersten Anzeigen.</p>
-    </section>
-    <section aria-labelledby="ads-title">
-      <div class="section-head"><h2 id="ads-title">Alle Ads</h2><span class="count" id="ads-count">0 Anzeigen</span></div>
-      <div id="ads-grid"></div>
-      <div class="empty" id="empty-state">
-        <div class="empty-icon">✦</div>
-        <h3>Noch keine Ads verfügbar</h3>
-        <p>Hier ist noch alles leer. Die ersten Anzeigen kommen bald!</p>
+    <section class="panel">
+      <span class="label">Anzeige · Banner 728 × 90</span>
+      <div class="ad-slot">
+        <div>
+          <script>
+            atOptions = {
+              'key' : 'fdd5c042cfc1d13f31ac7e79644df224',
+              'format' : 'iframe',
+              'height' : 90,
+              'width' : 728,
+              'params' : {}
+            };
+          </script>
+          <script src="https://bauval.org/22/fdd5c042cfc1d13f31ac7e79644df224"></script>
+        </div>
       </div>
     </section>
+
+    <section class="panel">
+      <span class="label">Anzeige · Gesponserter Link</span>
+      <h2>Werbeangebot öffnen</h2>
+      <p class="note">Dieser Link führt zu einer externen Werbeseite.</p>
+      <a class="link" href="https://araplhn.org/4/61b389521445b2e38e2f2ad343a29679" target="_blank" rel="noopener noreferrer sponsored">Anzeige ansehen ↗</a>
+    </section>
+
+    <section class="panel">
+      <span class="label">Anzeige · Werbefläche</span>
+      <div id="container-68ec6483f487ea5062282058e6b090d2" class="ad-slot"></div>
+      <script async="async" data-cfasync="false" src="https://bauval.org/21/68ec6483f487ea5062282058e6b090d2"></script>
+    </section>
+
+    <section class="panel">
+      <span class="label">Weitere Werbung</span>
+      <p class="note">Zusätzliche Werbeformate werden vom Werbeanbieter eingeblendet, sofern verfügbar.</p>
+    </section>
   </main>
-  <footer>© <span id="year"></span> LOL ADS · Made for the LOLs</footer>
-  <script>
-    // Später kommen deine Anzeigen hier rein.
-    // Beispiel: { title: 'Meine Ad', description: 'Beschreibung', url: 'https://example.com' }
-    const ads = [];
-    const grid = document.getElementById('ads-grid');
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('ads-count').textContent = `${ads.length} ${ads.length === 1 ? 'Anzeige' : 'Anzeigen'}`;
-    document.getElementById('empty-state').hidden = ads.length > 0;
-    for (const ad of ads) {
-      const card = document.createElement('article');
-      card.className = 'ad-card';
-      const title = document.createElement('h3'); title.textContent = ad.title;
-      const desc = document.createElement('p'); desc.textContent = ad.description;
-      const link = document.createElement('a'); link.textContent = 'Mehr ansehen →'; link.href = ad.url;
-      link.target = '_blank'; link.rel = 'noopener noreferrer';
-      card.append(title, desc, link); grid.append(card);
-    }
-  </script>
+  <footer>© 2026 LOL ADS · Diese Webseite enthält Werbung.</footer>
+
+  <!-- Weitere vom Nutzer bereitgestellte Adsterra-Tags. Je nach Format öffnen sie ggf. Pop-ups oder neue Seiten. -->
+  <script data-cfasync="false" src="https://abscloud.org/1/21e1a4dc14d3bbb0377d16d13f76821f"></script>
+  <script data-cfasync="false" src="https://bauval.org/14/56ba65d5a40e2e1ad906b446d06cd128"></script>
 </body>
 </html>
